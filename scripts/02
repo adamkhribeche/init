@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo 'enter LOGINs that you want to delete : '
+read login
+userdel -f $login
+

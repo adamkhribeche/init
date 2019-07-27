@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]
+then
+	if [ $1 = "-from" ] || [ $1 = "-to" ]
+	then
+		read -p "give the user name in the remote : " remote
+		read -p "give the remote-IP : " remote_IP
+		read -p "give the src path file : " src
+		read -p "give the dst path file : " dst
+		echo "${src} ${remote}@${remote_IP}:${dst}"
+		if [ $1 = "-from" ]
+		then
+			scp `echo "${remote}@${remote_IP}:${src} ${dst}"`
+		else
+			scp `echo "${src} ${remote}@${remote_IP}:${dst}"`
+		fi
+	else		
+		echo "usage: -to | -from  | -help | -h"
+	fi
+else
+	echo "usage: -to | -from  | -help | -h"
+fi

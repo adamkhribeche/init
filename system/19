@@ -1,0 +1,2 @@
+systemctl --all --type=service
+daemon

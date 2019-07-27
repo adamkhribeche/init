@@ -1,0 +1,14 @@
+graphic session
+=================
+- login as root user
+- creat an user with "adduser my_login"
+- set a password
+- logout and login to my account
+
+ssh session
+===========
+- Access to te host with the commend "ssh root@host"
+- put the root password
+- creat an user with "adduser my_login"
+- set a password
+- logout and access second time but now using "my_login@host"
