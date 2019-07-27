@@ -1,20 +1,26 @@
 #!/bin/bash
 
-if [ $1 = "-push" ] || [ $1 = "-get" ] 
+if  [ $# -eq 1 ]
 then
-	read -p "give the user login in the remote : " remote
-	read -p "give the remote-IP : " remote_IP
-	read -p "give the src path file : " src
-	read -p "give the dst path file : " dst
-	if [ $1 = "-get" ]
+	if [ $1 = "push" ] || [ $1 = "get" ]
 	then
-		scp `echo "${remote}@${remote_IP}:${src} ${dst}"`
-	else [ $1 = "-push" ]
-		scp `echo "${src} ${remote}@${remote_IP}:${dst}"`
+		read -p "give the user login in the remote : " remote
+		read -p "give the remote-IP : " remote_IP
+		read -p "give the src path file : " src
+		read -p "give the dst path file : " dst
+		if [ $1 = "get" ]
+		then
+			scp `echo "${remote}@${remote_IP}:${src} ${dst}"`
+		else
+			scp `echo "${src} ${remote}@${remote_IP}:${dst}"`
+		fi
+	elif [ $1 = "help" ]
+	then
+		echo "The script allows you to get or push a file between a remote machin and yours depending whether flag is launched with"
+		echo "usage: push | get | help "
+	else
+		echo "usage: push | get | help "
 	fi
-elif [ $1 = "-h" ] || [ $1 = "-help" ]
-then
-	echo "The script allows you to get or push a file between a remote machin and yours depending wheter flag is lauched with"
 else
-	echo "usage: push | get  | -help | -h"
+	echo "usage: push | get | help "
 fi
